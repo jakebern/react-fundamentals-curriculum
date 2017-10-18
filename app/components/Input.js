@@ -12,7 +12,7 @@ class Input extends React.Component {
   
   handleSubmit (event){
     event.preventDefault(); //if don't do this, page will force reload/submit
-    console.log(this.state.city);
+    this.props.handleSubmit(this.state.city);
   }
 
   handleChange(event){

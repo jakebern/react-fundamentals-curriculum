@@ -8,7 +8,7 @@ class Body extends React.Component {
       <div>
       	<div className = "entry">
       		<h3>Enter a City and State</h3>
-          <Input />
+          <Input handleSubmit = {this.props.handleSubmit}/>
       	</div>
       </div>
     )

@@ -9,7 +9,7 @@ class Header extends React.Component {
           <h2>Clever Title</h2>
         </div>
         <div>
-          <Input />
+          <Input handleSubmit = {this.props.handleSubmit}/>
         </div>
 
       </div>
