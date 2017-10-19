@@ -1,7 +1,5 @@
 var React = require('react');
-var Header = require('./Header');
 var Input = require('./Input');
-var Body = require('./Body');
 
 class App extends React.Component {
   constructor(props) {
@@ -18,8 +16,21 @@ class App extends React.Component {
   render() {
     return (
       <div>
-      	<Header handleSubmit = {this.handleSubmit}/>
-        <Body handleSubmit = {this.handleSubmit}/>
+      	 <div className = "header">
+            <div>
+              <h2>Clever Title</h2>
+            </div>
+            <div>
+              <Input handleSubmit = {this.handleSubmit}/>
+            </div>
+          </div>
+
+          <div>
+            <div className = "entry">
+              <h3>Enter a City and State</h3>
+              <Input handleSubmit = {this.handleSubmit}/>
+            </div>
+          </div>
       </div>
     )
   }
