@@ -1,37 +1,28 @@
 var React = require('react');
 var Input = require('./Input');
+var Home = require('./Home');
+var Forecast = require('./Forecast');
+var ReactRouter = require('react-router-dom');
+var Router = ReactRouter.BrowserRouter;
+var Route = ReactRouter.Route;
+var Switch = ReactRouter.Switch;
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    //this keyword inside handleSubmit will always
-    //refer to this component
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleSubmit(city){
-    console.log("this is my city: " + city);
-  }
-
   render() {
     return (
-      <div>
-      	 <div className = "header">
-            <div>
-              <h2>Clever Title</h2>
-            </div>
-            <div>
-              <Input handleSubmit = {this.handleSubmit}/>
-            </div>
-          </div>
+    <Router>
+       <div className = 'container'> 
+          <Switch>
+            <Route exact path = '/' component = {Home} />
+            <Route path='/forecast' component={Forecast} />
 
-          <div>
-            <div className = "entry">
-              <h3>Enter a City and State</h3>
-              <Input handleSubmit = {this.handleSubmit}/>
-            </div>
-          </div>
-      </div>
+            //will only be shown if no others paths active
+            <Route render = {function(){
+              return (<p>Not found</p>)
+            }} />
+          </Switch>
+       </div>
+      </Router>
     )
   }
 }
