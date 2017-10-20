@@ -6,11 +6,14 @@ class Forecast extends React.Component {
   componentDidMount(){
   	var queryparam = queryString.parse(this.props.location.search);
   	api.getMyWeather(queryparam.city).then(function(results){
-  		console.log(results);
+			console.log(results)
+  	})
+  	.catch(function(error){
+  		console.log("This is the error: " + error)
   	})
   }
-  render() {
 
+  render() {
     return (
       <div className = "header">
         This is the forecast
