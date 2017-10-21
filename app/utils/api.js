@@ -5,7 +5,7 @@ var base_url = "http://api.openweathermap.org/data/2.5/";
 
 module.exports = {
 	getMyWeather: function(city) {
-		return axios.get(base_url + "forecast?q="+city+"&type=accurate&APPID=" + id + "&cnt=5")
+		return axios.get(base_url + "forecast?q="+city+"&type=accurate&APPID=" + id)
     .then(function(response){
       return response.data;
     });

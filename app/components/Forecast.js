@@ -13,7 +13,6 @@ class Forecast extends React.Component {
   componentDidMount(){
   	var city = queryString.parse(this.props.location.search).city;
   	api.getMyWeather(city).then(function(results){
-			console.log(results);
       this.setState(function(){
         return {
           loading: false,
@@ -27,12 +26,36 @@ class Forecast extends React.Component {
   }
 
   render() {
+    if (this.state.data){
+      
+      //make sure sorted by date
+      var sorted_results = this.state.data.list.sort (function(a,b){
+        return a.dt - b.dt
+      })
+
+      //take first reading from 5 days
+      var five_day_weather = sorted_results.filter(function (day, number) {
+        var past_num = ((number !=0) ? number-1 : 0);
+        return day.dt_txt.substring(0,10) != sorted_results[past_num].dt_txt.substring(0,10); 
+      }.bind(this)).slice(0,5)
+    }
+   
     return this.state.loading === true 
-    ? <div> Loading </div>
-    : <div> 
-      My daily forecast goes here.
-    </div>
+      ? <div> Loading </div>
+      : <div>
+          <h2 className = "header">{this.state.data.city.name}</h2>
+
+          {five_day_weather.map(function(listitem, num){
+          return (
+            <div key = {num} className = "date">
+              <h2>{listitem.weather[0].main}</h2>
+              <p>{listitem.dt_txt.substring(0, 10)}</p>
+            </div>
+            )
+          })}
+
+      </div>
+    }
   }
-}
 
 module.exports = Forecast;
