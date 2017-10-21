@@ -1,6 +1,7 @@
 var React = require('react');
 var queryString = require('query-string');
 var api = require('../utils/api');
+var Link = require('react-router-dom').Link;
 
 class Forecast extends React.Component {
   constructor(props){
@@ -47,10 +48,12 @@ class Forecast extends React.Component {
 
           {five_day_weather.map(function(listitem, num){
           return (
-            <div key = {num} className = "date">
-              <h2>{listitem.weather[0].main}</h2>
-              <p>{listitem.dt_txt.substring(0, 10)}</p>
-            </div>
+            <Link key = {num} to = '/'>
+              <div className = 'date'>
+                <h2>{listitem.weather[0].main}</h2>
+                <p>{listitem.dt_txt.substring(0, 10)}</p>
+              </div>
+            </Link>
             )
           })}
 
