@@ -2,6 +2,7 @@ var React = require('react');
 var Input = require('./Input');
 var Home = require('./Home');
 var Forecast = require('./Forecast');
+var Details = require('./Details')
 var ReactRouter = require('react-router-dom');
 var Router = ReactRouter.BrowserRouter;
 var Route = ReactRouter.Route;
@@ -15,7 +16,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path = '/' component = {Home} />
             <Route path='/forecast' component={Forecast} />
-
+            <Route path = '/details' component = {Details}/>
             //will only be shown if no others paths active
             <Route render = {function(){
               return (<p>Not found</p>)

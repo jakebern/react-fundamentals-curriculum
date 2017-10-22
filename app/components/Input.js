@@ -6,6 +6,7 @@ class Input extends React.Component {
     this.state = {
       city: ''
     }
+    //guarantees this keyword in function refers to the component itself
     this.handleChange=this.handleChange.bind(this);
     this.handleSubmit=this.handleSubmit.bind(this);
   }
